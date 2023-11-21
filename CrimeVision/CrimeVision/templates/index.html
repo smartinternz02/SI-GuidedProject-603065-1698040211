@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offence Tracker - A Crime Classification</title>
+    <link rel="stylesheet" href="Final_Indexstyles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #fffdfd;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: rgb(103, 13, 237);
+    color: #fff;
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 50px;
+    margin: 0;
+}
+
+nav ul {
+    list-style: inside;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0f0e0e;
+}
+
+.content {
+    display: flex;
+    margin: 20px;
+}
+
+.description {
+    width: 50%;
+    padding-right: 20px;
+    text-align: left; /* Align text to the left */
+}
+
+.crime-picture {
+    width: 60%;
+}
+
+.crime-picture2 {
+    width: 45%;
+}
+
+.crime-picture img {
+    max-width: 100%;
+}
+
+.crime-picture2 img {
+    max-width: 100%;
+}
+
+.container {
+    max-width: 00px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #df2f2f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #3333334b;
+}
+
+.upload-form {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+}
+
+.file-label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #141414;
+    border-radius: 4px;
+}
+
+.predict-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.predict-button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #ff0000;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+</style>
+<body>
+    <header class="navbar">
+        <h1 class="logo">Deep Learning CRIME PREDICTION</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="description">
+            <h2>DESCRIPTION OF THE PROJECT</h2>
+            <p>Deep learning applied to crime identification is a sophisticated method leveraging neural networks to analyze images and videos from crime scenes. This technique involves training these networks with extensive datasets to enable pattern recognition and decision-making. Through the application of deep learning, one can scrutinize visual data of criminal incidents, accurately classifying various types of crimes based on the activities depicted.This approach proves valuable in diverse law enforcement scenarios, including crime scene investigation, forensic analysis, and surveillance. The underlying principle is training deep learning algorithms to discern pertinent patterns and features within images and videos that aid in identifying distinct types of criminal activities. Moreover, these algorithms can process substantial volumes of data, such as surveillance footage, to unveil trends and patterns in criminal behavior. By doing so, law enforcement agencies gain insights to develop proactive strategies and interventions aimed at crime prevention<p>
+
+
+            <h1>Prediction of Crime </h1>
+
+            <form action="/predict" method="post" enctype="multipart/form-data" class="upload-form">
+                <label for="file" class="file-label">Upload Image:</label>
+                <input type="file" id="file" name="file" accept=".png, .jpg, .jpeg, .gif" required>
+                <button type="submit" class="predict-button">Predict</button>
+            </form>
+
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+        </section>
+
+        <section class="crime-picture">
+            <img src="{{ url_for('static', filename='Crime_Picture.jpg') }}" alt="Crime Picture">
+        </section>
+
+        <section class="crime-picture2">
+            <img src="{{ url_for('static', filename='Crime_Picture2.jpg') }}" alt="Crime Picture2">
+        </section>
+        
+    </main>
+
+</body>
+</html>
